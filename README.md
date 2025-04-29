@@ -57,8 +57,14 @@ namespace TronNetTest
         public void GenerateAddress()
         {
             var key = TronECKey.GenerateKey(TronNetwork.MainNet);
-
+            // 获取私钥（64位十六进制字符串）
+            string privateKey = key.GetPrivateKey();
             var address = key.GetPublicAddress();
+
+            // 示例：通过已知私钥初始化 TronECKey
+            var privateKey = "eb3a2a0a3f77ee0d6a1ba951051e17aae4bf8d1ffbbd326c40efe11429673fd8";
+            var ecKey = new TronECKey(privateKey, TronNetwork.MainNet);
+            string address = ecKey.GetPublicAddress();
         }
     }
 }
